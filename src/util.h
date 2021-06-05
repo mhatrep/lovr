@@ -59,8 +59,8 @@ void lovrRetain(void* ref);
 void lovrRelease(void* ref, void (*destructor)(void*));
 
 // Dynamic Array
-typedef void* arr_allocator(void* data, size_t size);
-#define arr_t(T) struct { T* data; arr_allocator* alloc; size_t length, capacity; }
+typedef void* fn_allocator(void* data, size_t size);
+#define arr_t(T) struct { T* data; fn_allocator* alloc; size_t length, capacity; }
 #define arr_init(a, allocator) (a)->data = NULL, (a)->length = 0, (a)->capacity = 0, (a)->alloc = allocator
 #define arr_free(a) if ((a)->data) (a)->alloc((a)->data, 0)
 #define arr_reserve(a, n) _arr_reserve((void**) &((a)->data), n, &(a)->capacity, sizeof(*(a)->data), (a)->alloc)
@@ -73,7 +73,7 @@ typedef void* arr_allocator(void* data, size_t size);
 
 void* arr_alloc(void* data, size_t size);
 
-static inline void _arr_reserve(void** data, size_t n, size_t* capacity, size_t stride, arr_allocator* allocator) {
+static inline void _arr_reserve(void** data, size_t n, size_t* capacity, size_t stride, fn_allocator* allocator) {
   if (*capacity >= n) return;
   if (*capacity == 0) *capacity = 1;
   while (*capacity < n) *capacity *= 2;
