@@ -9,6 +9,8 @@
 struct Model;
 struct ModelData;
 struct Texture;
+struct Canvas;
+struct Batch;
 
 typedef enum {
   DRIVER_DESKTOP,
@@ -116,6 +118,8 @@ typedef enum {
 typedef struct HeadsetInterface {
   struct HeadsetInterface* next;
   HeadsetDriver driverType;
+  bool (*getVulkanInstanceExtensions)(char* buffer, uint32_t size);
+  bool (*getVulkanDeviceExtensions)(char* buffer, uint32_t size, uintptr_t physicalDevice);
   bool (*init)(float supersample, float offset, uint32_t msaa, bool overlay);
   void (*start)(void);
   void (*destroy)(void);
@@ -141,7 +145,7 @@ typedef struct HeadsetInterface {
   bool (*vibrate)(Device device, float strength, float duration, float frequency);
   struct ModelData* (*newModelData)(Device device, bool animated);
   bool (*animate)(Device device, struct Model* model);
-  void (*renderTo)(void (*callback)(void*), void* userdata);
+  void (*renderTo)(struct Batch* batch);
   struct Texture* (*getMirrorTexture)(void);
   void (*update)(float dt);
 } HeadsetInterface;
