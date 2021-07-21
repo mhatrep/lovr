@@ -750,7 +750,7 @@ static void vrapi_renderTo(Batch* batch) {
   // Render
   lovrCanvasSetTextures(state.canvas, (Texture*[1]) { state.textures[state.swapchainIndex] }, NULL);
   lovrGraphicsBegin();
-  lovrGraphicsRender(state.canvas, batch);
+  lovrGraphicsRender(state.canvas, &batch, 1);
   lovrGraphicsSubmit();
 
   // Submit a layer to VrApi
