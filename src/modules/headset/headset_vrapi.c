@@ -3,6 +3,7 @@
 #include "graphics/graphics.h"
 #include "data/blob.h"
 #include "data/image.h"
+#include "data/modelData.h"
 #include "core/maf.h"
 #include "core/os.h"
 #include "core/util.h"
@@ -496,7 +497,6 @@ static struct ModelData* vrapi_newModelData(Device device, bool animated) {
 
   return NULL;
 
-  /*
   ovrHandSkeleton* skeleton = &state.skeleton[device - DEVICE_HAND_LEFT];
 
   ovrHandMesh* mesh = malloc(sizeof(ovrHandMesh));
@@ -582,7 +582,7 @@ static struct ModelData* vrapi_newModelData(Device device, bool animated) {
   model->attributes[5] = (ModelAttribute) { .buffer = 5, .type = U16, .count = mesh->NumIndices };
 
   model->primitives[0] = (ModelPrimitive) {
-    .mode = DRAW_TRIANGLES,
+    .topology = TOPOLOGY_TRIANGLES,
     .attributes = {
       [ATTR_POSITION] = &model->attributes[0],
       [ATTR_NORMAL] = &model->attributes[1],
@@ -675,7 +675,6 @@ static struct ModelData* vrapi_newModelData(Device device, bool animated) {
   *children++ = model->jointCount;
 
   return model;
-  */
 }
 
 static bool vrapi_animate(Device device, struct Model* model) {
