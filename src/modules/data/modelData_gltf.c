@@ -1,6 +1,7 @@
 #include "data/modelData.h"
 #include "data/blob.h"
 #include "data/image.h"
+#include "util.h"
 #include "lib/jsmn/jsmn.h"
 #include <stdlib.h>
 #include <string.h>

@@ -8,7 +8,7 @@
 #include "core/gpu.h"
 #include "core/maf.h"
 #include "core/os.h"
-#include "core/util.h"
+#include "util.h"
 #include "resources/shaders.h"
 #include <string.h>
 #include <stdlib.h>

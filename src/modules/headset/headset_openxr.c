@@ -4,6 +4,7 @@
 #include "data/modelData.h"
 #include "event/event.h"
 #include "graphics/graphics.h"
+#include "core/maf.h"
 #include "core/os.h"
 #include "util.h"
 #include <stdlib.h>

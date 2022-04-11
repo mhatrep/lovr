@@ -3,6 +3,7 @@
 #include "data/blob.h"
 #include "data/image.h"
 #include "core/os.h"
+#include "util.h"
 #include <lua.h>
 #include <lauxlib.h>
 #include <string.h>

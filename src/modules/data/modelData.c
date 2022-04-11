@@ -1,6 +1,7 @@
 #include "data/modelData.h"
 #include "data/blob.h"
 #include "data/image.h"
+#include "util.h"
 #include <stdlib.h>
 
 ModelData* lovrModelDataCreate(Blob* source, ModelDataIO* io) {

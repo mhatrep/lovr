@@ -1,8 +1,8 @@
 #include "api.h"
 #include "graphics/graphics.h"
-#include "core/util.h"
 #include "data/blob.h"
 #include "data/image.h"
+#include "util.h"
 #include <lua.h>
 #include <lauxlib.h>
 #include <stdlib.h>
